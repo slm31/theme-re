@@ -31,9 +31,16 @@ module.exports = {
                 'auto-fill'  : 'repeat(auto-fill, 290px)',
             },
             colors             : {
-                'dark'         : '#1D1F1F',
-                'darker'       : '#0E0F0F',
-                'danger'       : '#AE0A0A'
+                'dark'         : '#0f172a',
+                'darker'       : '#020617',
+                'danger'       : '#dc2626',
+                'tech-blue'    : '#1e293b',
+                'tech-slate'   : '#334155',
+                'cyber-cyan'   : '#06b6d4',
+                'neon-blue'    : '#3b82f6',
+                'electric-purple': '#8b5cf6',
+                'glass-white'  : 'rgba(255, 255, 255, 0.05)',
+                'glass-dark'   : 'rgba(15, 23, 42, 0.8)',
             },
             spacing: {
               '3.75': '15px',
@@ -74,6 +81,10 @@ module.exports = {
                 'huge'    : '0px 3px 6px #00000029',
                 'progress': '0 5px 15px rgba(92, 213, 196, 0.4)',
                 'mobile': 'rgb(0 0 0 / 9%) 0px 2px 1px, rgb(0 0 0 / 9%) 0px 4px 2px, rgb(0 0 0 / 9%) 0px 8px 4px, rgb(0 0 0 / 9%) 0px 16px 18px, rgb(0 0 0 / 9%) -15px 10px 7px, rgb(0 0 0 / 9%) -20px 10px 20px, rgb(0 0 0 / 9%) -20px 10px 20px, rgb(0 0 0 / 9%) -25px 20px 20px',
+                'neon'    : '0 0 20px rgba(6, 182, 212, 0.3), 0 0 40px rgba(6, 182, 212, 0.1)',
+                'glow'    : '0 0 20px rgba(59, 130, 246, 0.15)',
+                'glass'   : '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                'premium' : '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
             },
             width              : {
                 '18': '4.5rem',

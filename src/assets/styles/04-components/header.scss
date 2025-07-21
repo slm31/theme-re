@@ -1,7 +1,66 @@
 
+/* Futuristic Header Enhancements */
+.futuristic-header {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(6, 182, 212, 0.5) 25%, 
+      rgba(59, 130, 246, 0.7) 50%, 
+      rgba(139, 92, 246, 0.5) 75%, 
+      transparent 100%
+    );
+    animation: glow-line 3s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes glow-line {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Glass morphism utility classes */
+.glass-effect {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cyber-glow {
+  box-shadow: 
+    0 0 20px rgba(6, 182, 212, 0.3),
+    inset 0 0 20px rgba(6, 182, 212, 0.1);
+}
+
+/* Hover effects for interactive elements */
+.interactive-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+}
+
+
+
 /* Top Nav */
 .top-navbar {
-  @apply flex py-2 min-h-[48px];
+  @apply flex py-2 min-h-[48px] bg-gradient-to-r from-darker via-dark to-tech-blue;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.1);
 
   @screen lg {
     @apply py-1.5;
@@ -20,7 +79,13 @@
   }
 
   .s-search-input{
-    @apply bg-gray-200/50 hover:bg-gray-200/70 border-none;
+    @apply bg-glass-white hover:bg-glass-dark border border-cyber-cyan/20 text-white placeholder-gray-400;
+    backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+    
+    &:focus {
+      @apply border-cyber-cyan/60 shadow-glow;
+    }
   }
 
   @media (max-width: 640px) {
@@ -29,17 +94,24 @@
     }
   } 
 
-  .topnav-is-dark & {
-    @apply bg-dark text-gray-300;
+  .topnav-is-dark &,
+  & {
+    @apply text-gray-100;
 
     .btn--circle-gray,
     .btn--rounded-gray,
     .s-search-input{
-      @apply bg-gray-100/10 hover:bg-gray-100/[0.15]
+      @apply bg-glass-white hover:bg-glass-dark border border-cyber-cyan/20;
+      backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
+      
+      &:hover {
+        @apply shadow-glow;
+      }
     }
 
     .topnav-link-item{
-      @apply border-gray-300/10;
+      @apply border-cyber-cyan/20;
     }
 
     .s-search-input{
@@ -64,6 +136,21 @@
 /* Main Nav */
 .main-nav-container {
   @apply min-h-[68px] lg:min-h-[84px];
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(6, 182, 212, 0.05) 50%, transparent 100%);
+    pointer-events: none;
+  }
   
   // Custom background Color
   .has-bg &,
@@ -144,18 +231,42 @@
 
 .navbar-brand {
   @apply items-center flex my-2 lg:my-0;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
 
   img {
     @apply w-auto max-h-12 max-w-[100px] xs:max-w-[170px];
+    filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.3));
+    transition: filter 0.3s ease;
+    
+    &:hover {
+      filter: drop-shadow(0 0 15px rgba(6, 182, 212, 0.5));
+    }
   }
 }
 
 // Mainnav cart icon
 .header-btn{
-  @apply border-none outline-none transition-opacity hover:opacity-80;
+  @apply border-none outline-none transition-all duration-300;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
 
   &__icon{
-    @apply text-xl w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-700;
+    @apply text-xl w-10 h-10 rounded-full border border-cyber-cyan/30 flex items-center justify-center text-gray-100;
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      @apply border-cyber-cyan/60 shadow-glow text-white;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%);
+    }
+    
     &.icon{
       @apply mr-[9px] rtl:ml-[9px] rtl:mr-[unset];
     }
@@ -168,11 +279,14 @@ salla-user-menu{
 
 // cart summary
 .s-cart-summary-total{
-  @apply text-black font-[600];
+  @apply text-white font-[600];
 }
 
 .s-cart-summary-count{
-  @apply -top-0.5 ltr:-left-1.5 rtl:-right-1.5 bg-red-800;
+  @apply -top-0.5 ltr:-left-1.5 rtl:-right-1.5;
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+  animation: pulse 2s infinite;
 }
 
 #nav-cart{
