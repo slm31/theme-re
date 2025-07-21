@@ -22,7 +22,7 @@ salla-button {
   @apply transition-all duration-500 flex-1 inline-flex justify-center items-center px-6 pb-2.5 pt-2 text-sm font-bold rounded-xl whitespace-nowrap relative overflow-hidden;
   @apply bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 hover:border-white/30;
   @apply hover:shadow-lg hover:shadow-blue-500/25 hover:-translate-y-0.5 active:translate-y-0;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -33,11 +33,11 @@ salla-button {
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
     transition: left 0.5s;
   }
-  
+
   &:hover::before {
     left: 100%;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -47,7 +47,7 @@ salla-button {
     transition: opacity 0.3s ease;
     border-radius: inherit;
   }
-  
+
   &:hover::after {
     opacity: 1;
   }
@@ -109,12 +109,12 @@ salla-button {
 
     &.is-added {
       @apply text-red-500;
-      
+
       i {
         animation: heartBeat 0.6s ease;
       }
     }
-    
+
     i {
       @apply transition-all duration-300;
     }
@@ -152,18 +152,18 @@ salla-button {
         @apply text-red-400;
       }
     }
-    
+
     &:hover i {
       @apply scale-125 text-blue-600;
     }
-    
+
     &.is-added {
       @apply bg-red-50 border-red-200 text-red-500;
-      
+
       &:hover {
         @apply bg-red-100 border-red-300;
       }
-      
+
       i {
         animation: heartBeat 0.6s ease, pulse 2s ease infinite;
       }
@@ -207,7 +207,7 @@ salla-button {
     background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
     background-size: 200% 200%;
     animation: gradientShift 4s ease infinite;
-    
+
     &::before {
       content: '';
       position: absolute;
@@ -217,7 +217,7 @@ salla-button {
       transition: all 0.3s ease;
       background-size: 200% 200%;
     }
-    
+
     &::after {
       content: '';
       position: absolute;
@@ -227,28 +227,28 @@ salla-button {
       transform: scale(0);
       transition: all 0.5s ease;
     }
-    
+
     &:hover {
       @apply shadow-2xl shadow-blue-500/50 -translate-y-1;
-      
+
       &::before {
         opacity: 1;
       }
-      
+
       &::after {
         opacity: 1;
         transform: scale(1);
       }
     }
-    
+
     &:active {
       @apply translate-y-0;
     }
-    
+
     .s-button-text {
       @apply relative z-10 transition-all duration-300;
     }
-    
+
     &:hover .s-button-text {
       @apply tracking-wider;
     }
@@ -329,6 +329,81 @@ salla-button {
       display: inline-block;
       position: relative;
       top: -2px;
+    }
+  }
+}
+
+/* Add to Cart Button Enhancements */
+salla-add-product-button {
+  button {
+    @apply transition-all duration-500 relative overflow-hidden;
+    background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);
+    border: 2px solid transparent;
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.3);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    &:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 45px rgba(59, 130, 246, 0.4);
+      border-color: rgba(255, 255, 255, 0.3);
+
+      &::before {
+        left: 100%;
+      }
+    }
+
+    &:active {
+      transform: translateY(-1px) scale(0.98);
+    }
+
+    .s-button-text {
+      position: relative;
+      z-index: 2;
+      font-weight: 600;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  /* Product detail specific styling */
+  &.sticky-product-bar__btn button {
+    @apply w-full py-4;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 50%, #6366f1 100%);
+
+    &:hover {
+      background: linear-gradient(135deg, #06b6d4 0%, #2563eb 50%, #4f46e5 100%);
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 20px 50px rgba(59, 130, 246, 0.5);
+    }
+  }
+
+  /* Quick buy button styling */
+  &[quick-buy] button {
+    position: relative;
+
+    &::after {
+      content: '⚡';
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    &:hover::after {
+      opacity: 1;
+      transform: translateY(-50%) translateX(-5px);
     }
   }
 }
