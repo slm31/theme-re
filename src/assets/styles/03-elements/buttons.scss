@@ -129,10 +129,24 @@ salla-button {
   }
 
   &--icon {
-    @apply flex items-center justify-center transition-all duration-300 bg-white/80 backdrop-blur-md text-gray-500 border border-white/30 hover:border-blue-500/50 hover:text-blue-600 hover:bg-white/90 mx-1 rounded-full w-10 h-10 font-medium flex-shrink-0 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5;
+    @apply flex items-center justify-center transition-all duration-500 bg-white/70 backdrop-blur-xl text-gray-500 border border-white/40 hover:border-blue-500/60 hover:text-blue-600 hover:bg-white/90 mx-1 rounded-full w-12 h-12 font-medium flex-shrink-0 hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-1 relative overflow-hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: inherit;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
 
     i {
-      @apply pointer-events-none transition-transform duration-300;
+      @apply pointer-events-none transition-all duration-300 relative z-10;
 
       &.sicon-heart {
         @apply text-red-400;
@@ -140,7 +154,19 @@ salla-button {
     }
     
     &:hover i {
-      @apply scale-110;
+      @apply scale-125 text-blue-600;
+    }
+    
+    &.is-added {
+      @apply bg-red-50 border-red-200 text-red-500;
+      
+      &:hover {
+        @apply bg-red-100 border-red-300;
+      }
+      
+      i {
+        animation: heartBeat 0.6s ease, pulse 2s ease infinite;
+      }
     }
   }
 
@@ -177,8 +203,10 @@ salla-button {
   }
 
   &--primary {
-    @apply text-white border-0 relative overflow-hidden;
+    @apply text-white border-0 relative overflow-hidden font-semibold;
     background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
     
     &::before {
       content: '';
@@ -186,19 +214,43 @@ salla-button {
       inset: 0;
       background: linear-gradient(135deg, #1e40af 0%, #7c3aed 50%, #0891b2 100%);
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: all 0.3s ease;
+      background-size: 200% 200%;
     }
     
-    &:hover::before {
-      opacity: 1;
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.3) 0%, transparent 70%);
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.5s ease;
     }
     
     &:hover {
-      @apply shadow-xl shadow-blue-500/40 -translate-y-1;
+      @apply shadow-2xl shadow-blue-500/50 -translate-y-1;
+      
+      &::before {
+        opacity: 1;
+      }
+      
+      &::after {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    &:active {
+      @apply translate-y-0;
     }
     
     .s-button-text {
-      @apply relative z-10;
+      @apply relative z-10 transition-all duration-300;
+    }
+    
+    &:hover .s-button-text {
+      @apply tracking-wider;
     }
   }
 

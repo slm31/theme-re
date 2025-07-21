@@ -1,8 +1,7 @@
-  
 // Wishlist Product entry
 .product-entry {
   @apply h-full transition-all duration-500 bg-white/80 backdrop-blur-sm border border-white/20 hover:bg-white/90 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-1 rounded-xl justify-between flex relative overflow-hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -13,7 +12,7 @@
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
     transition: left 0.5s;
   }
-  
+
   &:hover::before {
     left: 100%;
   }
@@ -80,28 +79,28 @@
 
 .s-product-card{
     @apply transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20;
-    
+
     &:hover {
       .s-product-card-image img {
         @apply scale-105;
       }
     }
-    
+
     &-entry {
       @apply bg-white/80 backdrop-blur-md border border-white/20 rounded-2xl overflow-hidden;
-      
+
       &:hover {
         @apply bg-white/90 shadow-2xl shadow-blue-500/10;
       }
     }
-    
+
     &-image {
       @apply relative overflow-hidden;
-      
+
       img {
         @apply transition-transform duration-700 ease-out;
       }
-      
+
       &::after {
         content: '';
         position: absolute;
@@ -113,15 +112,15 @@
         opacity: 0;
         transition: opacity 0.3s ease;
       }
-      
+
       &:hover::after {
         opacity: 1;
       }
     }
-    
+
     &-content {
       @apply relative z-10 backdrop-blur-sm;
-      
+
       &::before {
         content: '';
         position: absolute;
@@ -142,15 +141,15 @@
     &-starting-price{
       @apply w-auto;
     } 
-    
+
     &-price {
       @apply relative;
-      
+
       h4 {
         @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-bold;
       }
     }
-    
+
     &-title {
       a {
         @apply transition-colors duration-300 hover:text-blue-600;
@@ -339,7 +338,7 @@
       &-full-image salla-add-product-button {
         @apply bg-white rounded;
       }
-    
+
       &-wishlist-added i {
         @apply text-red-500
       }
@@ -347,10 +346,10 @@
         @apply flex-none sm:flex-1;
       }
     }
-    
+
     &-options-colors-wrapper{
       @apply flex flex-wrap gap-4;
-      
+
       .s-product-options-colors-item{
         @apply m-0 rtl:m-0 ltr:m-0 w-auto;
     }
@@ -457,7 +456,7 @@
   @apply bg-white border-dashed border border-gray-400 rounded-md;
   salla-product-options {
     @apply mb-0 pt-0;
-  
+
     .s-product-options-option:not(div.s-product-options-option-booking) {
       @apply block #{!important};
     }
@@ -475,7 +474,7 @@
 
       .s-product-options-multiple-options-wrapper {
         @apply block #{!important};
-      
+
     }
   }
 }
